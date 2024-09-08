@@ -1,0 +1,24 @@
+const express = require("express");
+const mongoose = require("mongoose");
+
+const userSchema = mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  user: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  status: {
+    type: String,
+    enum: ["active", "inactive"],
+  },
+  todos: [{ type: mongoose.Types.ObjectId, ref: "Todo" }],
+});
+
+module.exports = userSchema;
